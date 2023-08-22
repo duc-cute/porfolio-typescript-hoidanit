@@ -1,5 +1,6 @@
 /** @format */
 import { TypeAnimation } from "react-type-animation";
+import heroImg from "@/assets/img/hero/img.jpg";
 const HomeCV = () => {
   return (
     <>
@@ -16,7 +17,7 @@ const HomeCV = () => {
             <div className="content hero">
               <div className="inner_content">
                 <div className="image_wrap">
-                  <img src="img/hero/img.jpg" alt="hero" />
+                  <img src={heroImg} alt="hero" />
                 </div>
                 <div className="name_holder">
                   <h3>

@@ -414,31 +414,31 @@ new WOW().init();
 // -----------------    PROGRESS BAR    ----------------
 // -----------------------------------------------------
 
-function tdProgress(container) {
-  "use strict";
+// function tdProgress(container) {
+//   "use strict";
 
-  container.find(".arlo_tm_progress").each(function (i) {
-    var progress = jQuery(this);
-    var pValue = parseInt(progress.data("value"), 10);
-    var pColor = progress.data("color");
-    var pBarWrap = progress.find(".arlo_tm_bar_wrap");
-    var pBar = progress.find(".arlo_tm_bar");
-    pBar.css({ width: pValue + "%", backgroundColor: pColor });
-    setTimeout(function () {
-      pBarWrap.addClass("open");
-    }, i * 500);
-  });
-}
-jQuery(".arlo_tm_progress_wrap").each(function () {
-  "use strict";
-  var pWrap = jQuery(this);
-  pWrap.waypoint({
-    handler: function () {
-      tdProgress(pWrap);
-    },
-    offset: "90%",
-  });
-});
+//   container.find(".arlo_tm_progress").each(function (i) {
+//     var progress = jQuery(this);
+//     var pValue = parseInt(progress.data("value"), 10);
+//     var pColor = progress.data("color");
+//     var pBarWrap = progress.find(".arlo_tm_bar_wrap");
+//     var pBar = progress.find(".arlo_tm_bar");
+//     pBar.css({ width: pValue + "%", backgroundColor: pColor });
+//     setTimeout(function () {
+//       pBarWrap.addClass("open");
+//     }, i * 500);
+//   });
+// }
+// jQuery(".arlo_tm_progress_wrap").each(function () {
+//   "use strict";
+//   var pWrap = jQuery(this);
+//   pWrap.waypoint({
+//     handler: function () {
+//       tdProgress(pWrap);
+//     },
+//     offset: "90%",
+//   });
+// });
 
 // -----------------------------------------------------
 // -----------------    MINI BOXES    ------------------
