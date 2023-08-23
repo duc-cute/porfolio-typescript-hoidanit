@@ -11,7 +11,7 @@ const About = () => {
           <div className="container">
             <div className="arlo_tm_title_holder">
               <h3>About Me</h3>
-              <span>Main informations about me</span>
+              <span>Về tác giả</span>
             </div>
             <div className="arlo_tm_about_wrap">
               <div className="author_wrap">
@@ -96,7 +96,7 @@ const About = () => {
                         <span>
                           <label>Github:</label>{" "}
                           <a href="https://github.com/duc-cute">
-                            &#64;mygithub
+                            &#64;https://github.com/duc-cute
                           </a>
                         </span>
                       </li>

@@ -1,9 +1,13 @@
 /** @format */
 import destopLogo from "@/assets/img/logo/9065323.png";
-const LeftPart = () => {
+interface IPropsSider {
+  showSider: boolean;
+  setShowSider: (value: boolean) => void;
+}
+const LeftPart = ({ showSider, setShowSider }: IPropsSider) => {
   return (
     <>
-      <div className="arlo_tm_leftpart_wrap">
+      <div className={`arlo_tm_leftpart_wrap ${!showSider ? "opened" : ""}`}>
         <div className="leftpart_inner">
           <div className="logo_wrap">
             <a href="#">
@@ -19,7 +23,7 @@ const LeftPart = () => {
                 <a href="#about">About</a>
               </li>
               <li>
-                <a href="#services">Project</a>
+                <a href="#project">Project</a>
               </li>
               <li>
                 <a href="#portfolio">Portfolio</a>
@@ -57,8 +61,12 @@ const LeftPart = () => {
               </ul>
             </div>
           </div>
-          <a className="arlo_tm_resize" href="#">
-            <i className="xcon-angle-left"></i>
+          <a
+            className={`arlo_tm_resize ${!showSider ? "opened" : ""}`}
+            href="#"
+            onClick={() => setShowSider(!showSider)}
+          >
+            <i className={`xcon-angle-left ${!showSider ? "opened" : ""}`}></i>
           </a>
         </div>
       </div>

@@ -4,8 +4,12 @@ import LeftPart from "../components/leftpart";
 import MobileMenu from "../components/mobile/menu";
 import PreLoader from "../components/preloader";
 import RightPart from "../components/rightpart";
+import { FloatButton } from "antd";
+import { useState } from "react";
 
 const Portfolio = () => {
+  const [showSider, setShowSider] = useState<boolean>(true);
+
   return (
     <>
       <div className="arlo_tm_wrapper_all">
@@ -23,11 +27,11 @@ const Portfolio = () => {
         <MobileMenu />
 
         <div className="arlo_tm_content">
-          <LeftPart />
+          <LeftPart showSider={showSider} setShowSider={setShowSider} />
 
-          <RightPart />
+          <RightPart showSider={showSider} setShowSider={setShowSider} />
 
-          <a className="arlo_tm_totop" href="#"></a>
+          <FloatButton.BackTop />
         </div>
       </div>
     </>

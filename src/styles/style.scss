@@ -210,6 +210,12 @@ svg {
   width: 15px;
   height: 15px;
 }
+.icon {
+  svg {
+    width: unset;
+    height: unset;
+  }
+}
 img.svg {
   width: 15px;
   height: 15px;
@@ -1318,6 +1324,14 @@ img.svg {
             color: $color_7;
             line-height: 1;
           }
+        }
+
+        .desc {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 12px;
+          cursor: pointer;
         }
       }
     }
