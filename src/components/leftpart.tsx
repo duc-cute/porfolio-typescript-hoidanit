@@ -1,10 +1,37 @@
 /** @format */
 import destopLogo from "@/assets/img/logo/9065323.png";
+import { useState, useEffect } from "react";
 interface IPropsSider {
   showSider: boolean;
   setShowSider: (value: boolean) => void;
 }
 const LeftPart = ({ showSider, setShowSider }: IPropsSider) => {
+  const [activeTab, setActiveTab] = useState<string>("home");
+  useEffect(() => {
+    const { hash } = window.location;
+    const tab = hash.replace("#", "");
+    setActiveTab(tab);
+
+    let section = document.querySelector(`${hash}`);
+    setTimeout(() => {
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 1000);
+
+    console.log("---> window", window.location);
+  }, []);
+  const listMenu: string[] = ["home", "about", "skill", "project", "contact"];
+  const handleActiveTab = (
+    e: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    item: string
+  ) => {
+    setActiveTab(item);
+    let section = document.querySelector(`#${item}`);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <>
       <div className={`arlo_tm_leftpart_wrap ${!showSider ? "opened" : ""}`}>
@@ -16,18 +43,18 @@ const LeftPart = ({ showSider, setShowSider }: IPropsSider) => {
           </div>
           <div className="menu_list_wrap">
             <ul className="anchor_nav">
-              <li>
-                <a href="#home">Home</a>
-              </li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#project">Project</a>
-              </li>
-              <li>
-                <a href="#portfolio">Portfolio</a>
-              </li>
+              {listMenu.map((item, index) => {
+                return (
+                  <li key={index} onClick={(e) => handleActiveTab(e, item)}>
+                    <a
+                      className={`${item === activeTab ? "active" : ""}`}
+                      href={`#${item}`}
+                    >
+                      {item.toLocaleUpperCase()}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div className="leftpart_bottom">

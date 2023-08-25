@@ -7,7 +7,7 @@ const HomeCV = () => {
   ) => {
     const section = document.querySelector("#about");
     if (section) {
-      e.preventDefault();
+      // e.preventDefault();
       section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };

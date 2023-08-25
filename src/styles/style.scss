@@ -196,6 +196,7 @@ html {
   overflow-x: hidden;
   padding: 0px;
   margin: 0px;
+  scroll-behavior: smooth;
 }
 body {
   font-family: $font-family_1;
@@ -405,6 +406,9 @@ img.svg {
             &:before {
               width: 35px;
             }
+          }
+          &.active {
+            color: $color_3;
           }
         }
       }
@@ -725,7 +729,7 @@ img.svg {
   height: auto;
   clear: both;
   float: left;
-  padding-bottom: 122px;
+  // padding-bottom: 122px;
   position: relative;
   margin-top: -6px;
   -webkit-box-sizing: border-box;
@@ -1058,6 +1062,10 @@ img.svg {
   background-color: $background-color_5;
   padding-top: 90px;
 
+  &:first-child {
+    margin-top: 122px;
+  }
+
   &:last-child {
     padding-bottom: 90px;
     margin-bottom: 100px;
@@ -1263,6 +1271,7 @@ img.svg {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  margin-top: 56px;
   .arlo_tm_title_holder_wrap {
     margin-bottom: 93px;
   }
