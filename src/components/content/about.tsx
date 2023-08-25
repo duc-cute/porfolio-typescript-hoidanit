@@ -3,10 +3,29 @@ import imgInner from "@/assets/img/hero/img.jpg";
 import imgLayer from "@/assets/img/about/550x640.jpg";
 import cvPDF from "@/assets/cv.pdf";
 import { TypeAnimation } from "react-type-animation";
+import { useEffect, useRef } from "react";
+import Parallax from "parallax-js";
 const About = () => {
+  const sceneEl = useRef(null);
+  useEffect(() => {
+    if (sceneEl && sceneEl.current) {
+      const parallaxInstance = new Parallax(sceneEl.current, {
+        relativeInput: true,
+      });
+
+      parallaxInstance.enable();
+
+      return () => parallaxInstance.disable();
+    }
+  }, []);
+
   return (
     <>
-      <div className="arlo_tm_section relative" id="about">
+      <div
+        className="arlo_tm_section relative"
+        style={{ paddingTop: "100px" }}
+        id="about"
+      >
         <div className="arlo_tm_about_wrapper_all">
           <div className="container">
             <div className="arlo_tm_title_holder">
@@ -19,10 +38,15 @@ const About = () => {
                   <div
                     className="about_image_wrap parallax"
                     data-relative-input="true"
+                    ref={sceneEl}
                   >
                     <div className="image layer" data-depth="0.1">
                       <img src={imgLayer} alt="550x640" />
-                      <div className="inner" data-img-url={imgInner}></div>
+                      <div
+                        className="inner"
+                        style={{ backgroundImage: `url("${imgInner}")` }}
+                        data-img-url={imgInner}
+                      ></div>
                     </div>
                     <div className="border layer" data-depth="0.2">
                       <img src={imgLayer} alt="550x640" />
@@ -45,7 +69,7 @@ const About = () => {
                         ]}
                         wrapper="span"
                         speed={50}
-                        // style={{ fontSize: '2em', display: 'inline-block' }}
+                        style={{ color: "#E3872D", fontWeight: "600" }}
                         repeat={Infinity}
                       />
                     </h4>
