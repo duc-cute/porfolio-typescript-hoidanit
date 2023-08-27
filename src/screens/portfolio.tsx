@@ -5,10 +5,17 @@ import MobileMenu from "../components/mobile/menu";
 import PreLoader from "../components/preloader";
 import RightPart from "../components/rightpart";
 import { FloatButton } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { isMobile } from "react-device-detect";
 
 const Portfolio = () => {
   const [showSider, setShowSider] = useState<boolean>(true);
+  useEffect(() => {
+    if (isMobile) {
+      console.log("isMobile ", isMobile);
+      setShowSider(false);
+    }
+  }, [isMobile]);
 
   return (
     <>

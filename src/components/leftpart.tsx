@@ -1,6 +1,7 @@
 /** @format */
 import destopLogo from "@/assets/img/logo/9065323.png";
 import { useState, useEffect } from "react";
+import { isMobile } from "react-device-detect";
 interface IPropsSider {
   showSider: boolean;
   setShowSider: (value: boolean) => void;
@@ -9,23 +10,20 @@ const LeftPart = ({ showSider, setShowSider }: IPropsSider) => {
   const [activeTab, setActiveTab] = useState<string>("home");
   useEffect(() => {
     const { hash } = window.location;
-    const tab = hash.replace("#", "");
-    setActiveTab(tab);
+    if (hash) {
+      const tab = hash.replace("#", "");
+      setActiveTab(tab);
 
-    let section = document.querySelector(`${hash}`);
-    setTimeout(() => {
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 1000);
-
-    console.log("---> window", window.location);
+      let section = document.querySelector(`${hash}`);
+      setTimeout(() => {
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 1000);
+    }
   }, []);
   const listMenu: string[] = ["home", "about", "skill", "project", "contact"];
-  const handleActiveTab = (
-    e: React.MouseEvent<HTMLLIElement, MouseEvent>,
-    item: string
-  ) => {
+  const handleActiveTab = (item: string) => {
     setActiveTab(item);
     let section = document.querySelector(`#${item}`);
     if (section) {
@@ -45,7 +43,7 @@ const LeftPart = ({ showSider, setShowSider }: IPropsSider) => {
             <ul className="anchor_nav">
               {listMenu.map((item, index) => {
                 return (
-                  <li key={index} onClick={(e) => handleActiveTab(e, item)}>
+                  <li key={index} onClick={() => handleActiveTab(item)}>
                     <a
                       className={`${item === activeTab ? "active" : ""}`}
                       href={`#${item}`}
@@ -88,13 +86,17 @@ const LeftPart = ({ showSider, setShowSider }: IPropsSider) => {
               </ul>
             </div>
           </div>
-          <a
-            className={`arlo_tm_resize ${!showSider ? "opened" : ""}`}
-            href="#"
-            onClick={() => setShowSider(!showSider)}
-          >
-            <i className={`xcon-angle-left ${!showSider ? "opened" : ""}`}></i>
-          </a>
+          {!isMobile && (
+            <a
+              className={`arlo_tm_resize ${!showSider ? "opened" : ""}`}
+              href="#"
+              onClick={() => setShowSider(!showSider)}
+            >
+              <i
+                className={`xcon-angle-left ${!showSider ? "opened" : ""}`}
+              ></i>
+            </a>
+          )}
         </div>
       </div>
     </>

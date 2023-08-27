@@ -2845,21 +2845,31 @@ img.svg {
 .arlo_tm_mobile_menu_wrap {
   width: 100%;
   height: auto;
+  max-height: 500px;
   clear: both;
   float: left;
   background-color: $background-color_15;
-  padding: 30px 20px;
-  display: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
-  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  // padding: 30px 20px;
+  // display: none;
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  // border-top: 1px solid rgba(0, 0, 0, 0.09);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
+  // overflow: hidden;
+  &.hidden {
+    max-height: 0;
+
+    // margin: 0;
+  }
   .mob_menu {
     width: 100%;
     height: auto;
     clear: both;
     float: left;
+    padding: 30px 20px;
+
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -2877,6 +2887,9 @@ img.svg {
           font-family: $font-family_2;
           font-weight: 600;
           font-size: 19px;
+          &.active {
+            color: $color_3;
+          }
         }
       }
     }
